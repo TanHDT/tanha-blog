@@ -1,17 +1,16 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
+const author = 'TanHa';
 const title = 'Blog';
 const description = 'Latest articles.';
 const permalink = `${Astro.site.href}blog`;
-const img = ``;
-const author = ``;
 
 let allPosts = await Astro.glob('../../data/blog-posts/*.md');
 allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf());
 ---
 
-<BaseLayout title={title} description={description} permalink={permalink} img={img} author={author} current="blog">
+<BaseLayout author={author} title={title} description={description} permalink={permalink} current="blog">
   <!-- <div class="container">
     <h1>Blog</h1>
     {allPosts.map((post, index) => {
@@ -35,7 +34,7 @@ allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf()
   <div class="grid grid-cols-3 gap-4">
     <div class="col-span-2">
       {allPosts.map((post, index) => {
-        const href = `/blog/${post.file.split('/').pop().split('.').shift()}`;
+        const href = `/tanha-blog/blog/${post.file.split('/').pop().split('.').shift()}`;
       //   {
       //     post.frontmatter.img &&
       //     <a href={href} class="shrink-0">
